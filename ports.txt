@@ -1,4 +1,11 @@
-IP:192.168.1.7, Port:25 acik
-IP:192.168.1.1, Port:25 acik
-IP:192.168.1.1, Port:53 acik
-IP:192.168.1.1, Port:80 acik
+IP:192.168.1.7, Port:25 opened
+IP:192.168.1.1, Port:25 opened
+IP:192.168.1.1, Port:53 opened
+IP:192.168.1.1, Port:80 opened
+IP:192.168.1.7, Port:110 opened
+IP:192.168.1.1, Port:110 opened
+IP:192.168.1.7, Port:119 opened
+IP:192.168.1.1, Port:119 opened
+IP:192.168.1.7, Port:135 opened
+IP:192.168.1.7, Port:143 opened
+IP:192.168.1.1, Port:143 opened

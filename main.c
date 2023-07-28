@@ -25,7 +25,7 @@ void scan_ports(char *ip_addr)
     WSADATA wsa;
     if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
     {
-        printf("Winsock baslatilamadi Hata Kodu: %d\n", WSAGetLastError());
+        printf("Winsock is not initialized Error Code: %d\n", WSAGetLastError());
         return;
     }
 
@@ -39,7 +39,7 @@ void scan_ports(char *ip_addr)
         sockfd = socket(AF_INET, SOCK_STREAM, 0);
         if (sockfd == INVALID_SOCKET)
         {
-            printf("Socket olusturulamadi Hata Kodu: %d\n", WSAGetLastError());
+            printf("Socket is not initialized Error Code: %d\n", WSAGetLastError());
             WSACleanup();
             return;
         }
@@ -49,13 +49,13 @@ void scan_ports(char *ip_addr)
         if (connect(sockfd, (struct sockaddr *)&target_addr, sizeof(target_addr)) == 0)
         {
             FILE *file = fopen("ports.txt", "a+");
-            fprintf(file, "IP:%s, Port:%d acik\n", ip_addr, port);
+            fprintf(file, "IP:%s, Port:%d opened\n", ip_addr, port);
             fclose(file);
-            printf("IP:%s, Port:%d acik\n", ip_addr, port);
+            printf("IP:%s, Port:%d opened\n", ip_addr, port);
         }
         else
         {
-            printf("IP:%s, Port:%d kapali\n", ip_addr, port);
+            printf("IP:%s, Port:%d closed\n", ip_addr, port);
         }
 
         closesocket(sockfd);
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
         threads[i] = CreateThread(NULL, 0, thread_func, ip_interval[i], 0, NULL);
         if (threads[i] == NULL)
         {
-            printf("Thread olusturulamadi Hata Kodu: %d\n", GetLastError());
+            printf("Thread is not initialized Error Code: %d\n", GetLastError());
             return 1;
         }
     }
